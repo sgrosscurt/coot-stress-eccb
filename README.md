@@ -12,7 +12,7 @@ speelt automatisch (en loopend) een bijbehorend meerkoetgeluid af.
 ## Live bekijken
 
 Als GitHub Pages aanstaat, draait de app op:
-<https://sgrosscurt.github.io/coot-sounds-eccb/>
+<https://sgrosscurt.github.io/coot-stress-eccb/>
 
 ## Zelf aanpassen
 
