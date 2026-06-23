@@ -66,12 +66,29 @@
   margin-top: 0.5rem;
 }
 
-.submit-btn:active {
+.submit-btn:hover:not(:disabled) {
+  box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+}
+
+.submit-btn:active:not(:disabled) {
   transform: scale(0.98);
 }
 
-.submit-btn:hover {
-  box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+/* Submitting state */
+.submit-btn.submitting,
+.submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Success state */
+.submit-btn.success {
+  background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+}
+
+/* Error state */
+.submit-btn.error {
+  background: linear-gradient(135deg, var(--accent-color) 0%, #c0392b 100%);
 }
 
 @media (min-width: 768px) {
