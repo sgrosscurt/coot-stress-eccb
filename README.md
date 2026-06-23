@@ -1,78 +1,167 @@
-# Coot Sounds
+# Coot Stress Responses - Interactive Sound Experience
 
-A small web app that lets you hear how three behavioral responses of coots
+**When stress interacts, responses diverge: Noise and light pollution reshape vocal behaviour of Eurasian coots**
 
-change under the influence of **light** and **sound**. The app has four tabs —
-one per response. Each tab has two sliders (Light on/off, Sound
-on/off). Together, these two sliders provide four combinations, and each combination
-automatically plays (and loops) a corresponding coot sound.
+## Overview
 
-> The included sounds are **placeholders** (regular tones). Replace them with
-> your own recordings — see below.
+This interactive webapp allows you to explore how noise and light pollution affect Eurasian coot vocal behavior across three different response categories:
 
-## View live
+- **Activity Rate**: How stress affects coot call frequency
+- **Circadian Pattern**: How stress affects time-of-day calling behavior  
+- **Call Duration**: How stress affects individual call length
 
-If GitHub Pages is running, the app runs on:
-<https://sgrosscurt.github.io/coot-stress-eccb/>
+## Features
 
-## Customize
+✅ Three interactive tabs for different response types
+✅ Real-time sound playback based on environmental conditions
+✅ ON/OFF switches for Light and Noise pollution levels
+✅ Mute button to silence all sounds
+✅ Mobile-first responsive design
+✅ Start screen with coot icon
+✅ Feedback forms for user input
+✅ Easy-to-use interface optimized for phones
 
-You only need to know two things.
+## Getting Started
 
-### 1. Add your own sounds
+### Prerequisites
 
-Place your `.mp3` files in the `sounds/<response>/` folder. For each response, there are
-**four** files with fixed names:
+- Node.js (v14 or higher)
+- npm or yarn
 
-| File name | When it plays |
+### Installation
 
-| ---------------------------- | ------------------------- |
-
-| `light-off_sound-off.mp3` | everything off (basic sound) |
-
-| `light-on_sound-off.mp3` | only light on |
-
-`light-off_sound-on.mp3` | only sound on |
-
-| `light-on_sound-on.mp3` | light and sound on |
-
-Simply replace the existing file with your own recording **with the same
-name**. The app automatically selects the correct file for every position of the
-sliders.
-
-The folders are:
-
-```
-sounds/
-├── activity-rate/
-├── activity-pattern/
-├── response-3/
-└── response-4/
-
+1. Clone the repository:
+```bash
+git clone https://github.com/sgrosscurt/coot-stress-eccb.git
+cd coot-stress-eccb
 ```
 
-### 2. Changing tab names and texts
+2. Install dependencies:
+```bash
+npm install
+```
 
-Open `js/config.js`. There you adjust the tab titles (`label`), the explanation per tab (`description`), and the general texts. If you also want to change a folder name,
+3. Add sound files to the `public/sounds/` directory in this structure:
+```
+public/sounds/
+├── activity/
+│   ├── light-off_noise-off.mp3
+│   ├── light-on_noise-off.mp3
+│   ├── light-off_noise-on.mp3
+│   └── light-on_noise-on.mp3
+├── circadian/
+│   ├── light-off_noise-off.mp3
+│   ├── light-on_noise-off.mp3
+│   ├── light-off_noise-on.mp3
+│   └── light-on_noise-on.mp3
+└── duration/
+    ├── light-off_noise-off.mp3
+    ├── light-on_noise-off.mp3
+    ├── light-off_noise-on.mp3
+    └── light-on_noise-on.mp3
+```
 
-adjust the `id` **and** rename the corresponding folder to `sounds/`.
+4. Start the development server:
+```bash
+npm start
+```
 
-## View locally
+5. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-Audio does not load if you double-click `index.html` directly (browsers block that). Therefore, start a small local server in the project folder:
+## Adding Sound Files
+
+You need **12 sound files** in total (3 responses × 4 combinations):
+- 3 responses × 4 combinations = 12 sounds
+
+### File Naming Convention
+
+Each sound must use these exact filenames (case-sensitive):
+- `light-off_noise-off.mp3` - Baseline (no stressors)
+- `light-on_noise-off.mp3` - Light pollution only
+- `light-off_noise-on.mp3` - Noise pollution only
+- `light-on_noise-on.mp3` - Both light and noise pollution
+
+### Customizing the Coot Icon
+
+To use your own coot icon instead of the emoji:
+
+1. Place your PNG file in `public/icons/coot.png`
+2. Update `src/components/StartScreen.js` to reference your image
+
+## Usage
+
+1. **Click the coot icon** on the start screen to begin
+2. **Select a response type** using the tabs (Activity Rate, Circadian Pattern, or Call Duration)
+3. **Toggle environmental conditions** using the Light and Noise switches
+4. **Hear the effect** of each condition combination on coot vocalizations
+5. **Mute sounds** using the 🔊 button in the top right
+6. **Share feedback** at the bottom of the page
+
+## Project Structure
+
+```
+coot-stress-eccb/
+├── public/
+│   ├── sounds/                 # Audio files (12 total)
+│   │   ├── activity/
+│   │   ├── circadian/
+│   │   └── duration/
+│   ├── icons/                  # Optional custom coot icon
+│   └── index.html
+├── src/
+│   ├── components/
+│   │   ├── StartScreen.js
+│   │   ├── TabContainer.js
+│   │   ├── ResponseTab.js
+│   │   ├── SoundPlayer.js
+│   │   ├── ControlSwitches.js
+│   │   └── FeedbackForm.js
+│   ├── App.js
+│   ├── App.css
+│   └── index.js
+├── package.json
+└── README.md
+```
+
+## Mobile Optimization
+
+This webapp is optimized for mobile devices with:
+- Touch-friendly interface
+- ON/OFF switches for clear interaction
+- Large buttons and controls
+- Full-width responsive layout
+- Optimized font sizes for readability
+
+## Building for Production
 
 ```bash
-python3 -m http.server 8000
+npm run build
 ```
 
-Then open <http://localhost:8000> in your browser. Click on **"Click to start"** (browsers only allow sound after a click).
+This creates an optimized production build in the `build/` folder.
 
-## Technology
+## Deployment
 
-Pure HTML, CSS, and JavaScript — no build step, no dependencies. Therefore, it can be hosted directly on GitHub Pages. ```
-index.html page structure
-css/styles.css styling
-js/config.js ← adjust tabs and text here
-js/app.js tab, slider, and audio logic
-sounds/ ← add your sounds here
-```
+The app automatically deploys to GitHub Pages when you push to the main branch via GitHub Actions.
+
+View live: https://sgrosscurt.github.io/coot-stress-eccb/
+
+## Contributing
+
+Contributions are welcome! Feel free to:
+- Add new features
+- Improve the UI/UX
+- Add more response types
+- Enhance accessibility
+
+## License
+
+This project is open source and available under the MIT License.
+
+## Contact
+
+Have questions or feedback? Share your thoughts using the feedback form in the app!
+
+---
+
+**Created for**: Interactive exploration of how noise and light pollution affect Eurasian coot vocal behavior
