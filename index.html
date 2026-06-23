@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="nl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Meerkoetgeluiden</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <!-- Startoverlay: nodig omdat browsers geluid pas toestaan na een klik -->
+    <div id="start-overlay" class="overlay">
+      <div class="overlay-card">
+        <h1 id="start-titel">Meerkoetgeluiden</h1>
+        <button id="start-knop" class="start-knop">Klik om te beginnen</button>
+        <p id="start-hint" class="start-hint"></p>
+      </div>
+    </div>
+
+    <header class="app-header">
+      <h1 id="app-titel">Meerkoetgeluiden</h1>
+      <p id="app-intro" class="app-intro"></p>
+    </header>
+
+    <!-- Tabbalk en panelen worden door app.js opgebouwd uit config.js -->
+    <nav id="tabbalk" class="tabbalk" role="tablist" aria-label="Responses"></nav>
+    <main id="panelen" class="panelen"></main>
+
+    <footer class="app-footer">
+      <p>Placeholder-geluiden zijn tonen — vervang ze in <code>sounds/</code>.</p>
+    </footer>
+
+    <script src="js/config.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
