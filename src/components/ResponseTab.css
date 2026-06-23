@@ -1,0 +1,61 @@
+.response-tab {
+  padding: 1.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.tab-header h2 {
+  font-size: 1.3rem;
+  color: var(--primary-color);
+  margin: 0 0 0.4rem 0;
+}
+
+.tab-description {
+  color: var(--text-light);
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.sound-player-section h3,
+.controls-section h3 {
+  font-size: 1rem;
+  color: var(--primary-color);
+  margin: 0 0 0.75rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.85rem;
+}
+
+.conditions-info {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.4rem 0.9rem;
+  border-radius: 20px;
+  background-color: var(--border-color);
+  color: var(--text-light);
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.badge.active {
+  background-color: var(--secondary-color);
+  color: white;
+}
+
+@media (min-width: 768px) {
+  .response-tab {
+    padding: 2rem;
+    gap: 2rem;
+  }
+
+  .tab-header h2 {
+    font-size: 1.6rem;
+  }
+}
