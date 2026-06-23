@@ -24,10 +24,9 @@ const ResponseTab = ({
 
   const [activeSound, setActiveSound] = useState('light_off_noise_off');
 
-  // Determine which sound to play based on light and noise switches
   useEffect(() => {
     let soundToPlay = 'light_off_noise_off';
-    
+
     if (lightOn && noiseOn) {
       soundToPlay = 'light_on_noise_on';
     } else if (lightOn) {
@@ -44,16 +43,17 @@ const ResponseTab = ({
       }
     });
 
-    // Play the new sound (unless muted)
     setActiveSound(soundToPlay);
+
     if (!isMuted && audioRefs.current[soundToPlay]) {
       audioRefs.current[soundToPlay].play().catch(err => {
         console.log('Audio playback failed:', err);
       });
-      setIsPlaying(prev => ({
-        ...prev,
-        [tabId]: true
-      }));
+      // FIX: mark as playing
+      setIsPlaying(prev => ({ ...prev, [tabId]: true }));
+    } else {
+      // FIX: mark as NOT playing when muted or no audio ref yet
+      setIsPlaying(prev => ({ ...prev, [tabId]: false }));
     }
   }, [lightOn, noiseOn, isMuted, tabId, setIsPlaying]);
 
