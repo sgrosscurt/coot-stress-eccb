@@ -17,6 +17,10 @@ const SoundPlayer = ({ tabId, soundType, audioRefs, isPlaying, isMuted }) => {
     }
   };
 
+  // FIX: use process.env.PUBLIC_URL so paths work both locally (localhost:3000)
+  // and on GitHub Pages (/coot-stress-eccb/). CRA sets this automatically.
+  const soundBase = `${process.env.PUBLIC_URL}/sounds/${tabId}`;
+
   return (
     <div className="sound-player">
       <div className="sound-info">
@@ -34,31 +38,23 @@ const SoundPlayer = ({ tabId, soundType, audioRefs, isPlaying, isMuted }) => {
 
       <div className="audio-container">
         <audio
-          ref={el => {
-            audioRefs.current['light_off_noise_off'] = el;
-          }}
-          src={`/coot-stress-eccb/sounds/${tabId}/light-off_noise-off.mp3`}
+          ref={el => { audioRefs.current['light_off_noise_off'] = el; }}
+          src={`${soundBase}/light-off_noise-off.mp3`}
           loop
         />
         <audio
-          ref={el => {
-            audioRefs.current['light_on_noise_off'] = el;
-          }}
-          src={`/coot-stress-eccb/sounds/${tabId}/light-on_noise-off.mp3`}
+          ref={el => { audioRefs.current['light_on_noise_off'] = el; }}
+          src={`${soundBase}/light-on_noise-off.mp3`}
           loop
         />
         <audio
-          ref={el => {
-            audioRefs.current['light_off_noise_on'] = el;
-          }}
-          src={`/coot-stress-eccb/sounds/${tabId}/light-off_noise-on.mp3`}
+          ref={el => { audioRefs.current['light_off_noise_on'] = el; }}
+          src={`${soundBase}/light-off_noise-on.mp3`}
           loop
         />
         <audio
-          ref={el => {
-            audioRefs.current['light_on_noise_on'] = el;
-          }}
-          src={`/coot-stress-eccb/sounds/${tabId}/light-on_noise-on.mp3`}
+          ref={el => { audioRefs.current['light_on_noise_on'] = el; }}
+          src={`${soundBase}/light-on_noise-on.mp3`}
           loop
         />
       </div>
