@@ -1,40 +1,46 @@
-# Meerkoetgeluiden
+# Coot Sounds
 
-Een kleine webapp waarmee je kunt horen hoe vier gedragsresponses van meerkoeten
-veranderen onder invloed van **licht** en **geluid**. De app heeft vier tabjes —
-één per response. Op elk tabje staan twee schuifjes (Licht aan/uit, Geluid
-aan/uit). Die twee schuifjes geven samen vier combinaties, en elke combinatie
-speelt automatisch (en loopend) een bijbehorend meerkoetgeluid af.
+A small web app that lets you hear how three behavioral responses of coots
 
-> De meegeleverde geluiden zijn **placeholders** (gewoon tonen). Vervang ze door
-> je eigen opnames — zie hieronder.
+change under the influence of **light** and **sound**. The app has four tabs —
+one per response. Each tab has two sliders (Light on/off, Sound
+on/off). Together, these two sliders provide four combinations, and each combination
+automatically plays (and loops) a corresponding coot sound.
 
-## Live bekijken
+> The included sounds are **placeholders** (regular tones). Replace them with
+> your own recordings — see below.
 
-Als GitHub Pages aanstaat, draait de app op:
+## View live
+
+If GitHub Pages is running, the app runs on:
 <https://sgrosscurt.github.io/coot-stress-eccb/>
 
-## Zelf aanpassen
+## Customize
 
-Je hoeft maar twee dingen te weten.
+You only need to know two things.
 
-### 1. Eigen geluiden toevoegen
+### 1. Add your own sounds
 
-Zet je `.mp3`-bestanden in de map `sounds/<response>/`. Per response zijn er
-**vier** bestanden met vaste namen:
+Place your `.mp3` files in the `sounds/<response>/` folder. For each response, there are
+**four** files with fixed names:
 
-| Bestandsnaam                 | Wanneer het speelt        |
+| File name | When it plays |
+
 | ---------------------------- | ------------------------- |
-| `licht-uit_geluid-uit.mp3`   | alles uit (basisgeluid)   |
-| `licht-aan_geluid-uit.mp3`   | alleen licht aan          |
-| `licht-uit_geluid-aan.mp3`   | alleen geluid aan         |
-| `licht-aan_geluid-aan.mp3`   | licht én geluid aan       |
 
-Vervang simpelweg het bestaande bestand door je eigen opname **met dezelfde
-naam**. De app pakt automatisch het juiste bestand bij elke stand van de
-schuifjes.
+| `light-off_sound-off.mp3` | everything off (basic sound) |
 
-De mappen zijn:
+| `light-on_sound-off.mp3` | only light on |
+
+`light-off_sound-on.mp3` | only sound on |
+
+| `light-on_sound-on.mp3` | light and sound on |
+
+Simply replace the existing file with your own recording **with the same
+name**. The app automatically selects the correct file for every position of the
+sliders.
+
+The folders are:
 
 ```
 sounds/
@@ -42,35 +48,31 @@ sounds/
 ├── activity-pattern/
 ├── response-3/
 └── response-4/
+
 ```
 
-### 2. Tabnamen en teksten wijzigen
+### 2. Changing tab names and texts
 
-Open `js/config.js`. Daar pas je de tabtitels (`label`), de uitleg per tab
-(`description`) en de algemene teksten aan. Wil je ook een mapnaam veranderen,
-pas dan de `id` aan **én** hernoem de bijbehorende map in `sounds/`.
+Open `js/config.js`. There you adjust the tab titles (`label`), the explanation per tab (`description`), and the general texts. If you also want to change a folder name,
 
-## Lokaal bekijken
+adjust the `id` **and** rename the corresponding folder to `sounds/`.
 
-Audio laadt niet als je `index.html` rechtstreeks dubbelklikt (browsers
-blokkeren dat). Start daarom een klein lokaal serventje in de projectmap:
+## View locally
+
+Audio does not load if you double-click `index.html` directly (browsers block that). Therefore, start a small local server in the project folder:
 
 ```bash
 python3 -m http.server 8000
 ```
 
-Open daarna <http://localhost:8000> in je browser. Klik op **"Klik om te
-beginnen"** (browsers staan geluid pas toe na een klik).
+Then open <http://localhost:8000> in your browser. Click on **"Click to start"** (browsers only allow sound after a click).
 
-## Techniek
+## Technology
 
-Pure HTML, CSS en JavaScript — geen build-stap, geen dependencies. Daardoor
-direct te hosten op GitHub Pages.
-
-```
-index.html        opbouw van de pagina
-css/styles.css    opmaak
-js/config.js      ← hier pas je tabs en teksten aan
-js/app.js         tab-, schuifjes- en audio-logica
-sounds/           ← hier zet je je geluiden
+Pure HTML, CSS, and JavaScript — no build step, no dependencies. Therefore, it can be hosted directly on GitHub Pages. ```
+index.html page structure
+css/styles.css styling
+js/config.js ← adjust tabs and text here
+js/app.js tab, slider, and audio logic
+sounds/ ← add your sounds here
 ```
