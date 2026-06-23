@@ -12,7 +12,7 @@ speelt automatisch (en loopend) een bijbehorend meerkoetgeluid af.
 ## Live bekijken
 
 Als GitHub Pages aanstaat, draait de app op:
-<https://jeroenwijnen98.github.io/webapp-meerkoetgeluiden/>
+<https://sgrosscurt.github.io/coot-sounds-eccb/>
 
 ## Zelf aanpassen
 
