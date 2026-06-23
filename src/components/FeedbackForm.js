@@ -4,7 +4,7 @@ import './FeedbackForm.css';
 // FIX: Replace YOUR_FORM_ID below with your actual Formspree form ID.
 // Sign up free at https://formspree.io, create a form, and paste the ID here.
 // e.g. if your endpoint is https://formspree.io/f/abcd1234 → use 'abcd1234'
-const FORMSPREE_ID = 'YOUR_FORM_ID';
+const FORMSPREE_ID = 'mgojvdbq';
 
 const FeedbackForm = () => {
   const [formData, setFormData] = useState({
