@@ -40,3 +40,5 @@ const ControlSwitches = ({ lightOn, noiseOn, setLightOn, setNoiseOn }) => {
 };
 
 export default ControlSwitches;
+
+
