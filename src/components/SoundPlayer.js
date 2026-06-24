@@ -47,22 +47,22 @@ const SoundPlayer = ({ tabId, soundType, audioRefs, isPlaying, isMuted }) => {
       <div className="audio-container">
         <audio
           ref={el => { audioRefs.current['light_off_noise_off'] = el; }}
-          src={`${soundBase}/quiet_dark.WAV`}
+          src={`${soundBase}/quiet_dark.wav`}
           loop
         />
         <audio
           ref={el => { audioRefs.current['light_on_noise_off'] = el; }}
-          src={`${soundBase}/quiet_bright.WAV3`}
+          src={`${soundBase}/quiet_bright.wav`}
           loop
         />
         <audio
           ref={el => { audioRefs.current['light_off_noise_on'] = el; }}
-          src={`${soundBase}/noisy_dark.WAV`}
+          src={`${soundBase}/noisy_dark.wav`}
           loop
         />
         <audio
           ref={el => { audioRefs.current['light_on_noise_on'] = el; }}
-          src={`${soundBase}/noisy_bright.WAV`}
+          src={`${soundBase}/noisy_bright.wav`}
           loop
         />
       </div>
