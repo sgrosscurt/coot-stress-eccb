@@ -12,17 +12,17 @@ const TabContainer = ({ isMuted }) => {
     {
       id: 'activity',
       label: 'Activity Rate',
-      description: 'How stress affects coot call frequency'
+      description: 'Synergistic increase in call rate'
     },
     {
       id: 'circadian',
       label: 'Circadian Pattern',
-      description: 'How stress affects time-of-day calling behavior'
+      description: 'Fundamental change in circadian rhythm due to multi-stress'
     },
     {
       id: 'duration',
       label: 'Call Duration',
-      description: 'How stress affects individual call length'
+      description: 'Antagonistic decrease in call duration'
     }
   ];
 
