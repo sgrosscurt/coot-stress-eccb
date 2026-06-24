@@ -14,9 +14,22 @@
 }
 
 .coot-icon {
-  font-size: 120px;
   margin-bottom: 2rem;
   animation: bounce 2s infinite;
+}
+
+.coot-icon img {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  animation: bounce 2s infinite;
+}
+
+.coot-emoji img {
+  width: 1.5rem;
+  height: 1.5rem;
+  object-fit: contain;
+  vertical-align: middle;
 }
 
 @keyframes bounce {
