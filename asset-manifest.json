@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/coot-stress-eccb/static/css/main.640b0b0c.css",
+    "main.css": "/coot-stress-eccb/static/css/main.b4e0c66b.css",
     "main.js": "/coot-stress-eccb/static/js/main.932dafc7.js",
     "index.html": "/coot-stress-eccb/index.html",
-    "main.640b0b0c.css.map": "/coot-stress-eccb/static/css/main.640b0b0c.css.map",
+    "main.b4e0c66b.css.map": "/coot-stress-eccb/static/css/main.b4e0c66b.css.map",
     "main.932dafc7.js.map": "/coot-stress-eccb/static/js/main.932dafc7.js.map"
   },
   "entrypoints": [
-    "static/css/main.640b0b0c.css",
+    "static/css/main.b4e0c66b.css",
     "static/js/main.932dafc7.js"
   ]
 }
