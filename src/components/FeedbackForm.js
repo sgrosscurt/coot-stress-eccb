@@ -1,38 +1,26 @@
 import React, { useState } from 'react';
 import './FeedbackForm.css';
 
-// FIX: Replace YOUR_FORM_ID below with your actual Formspree form ID.
-// Sign up free at https://formspree.io, create a form, and paste the ID here.
-// e.g. if your endpoint is https://formspree.io/f/abcd1234 → use 'abcd1234'
 const FORMSPREE_ID = 'mgojvdbq';
 
-const FeedbackForm = () => {
-  const [formData, setFormData] = useState({
-    adaptive: '',
-    research: '',
-    email: ''
-  });
-  const [status, setStatus] = useState('idle'); // idle | submitting | success | error
+const FeedbackField = ({ id, label, placeholder, type = 'textarea' }) => {
+  const [value, setValue] = useState('');
+  const [status, setStatus] = useState('idle');
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async () => {
+    if (!value.trim()) return;
     setStatus('submitting');
 
     try {
       const response = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify(formData)
+        body: JSON.stringify({ [id]: value })
       });
 
       if (response.ok) {
         setStatus('success');
-        setFormData({ adaptive: '', research: '', email: '' });
+        setValue('');
         setTimeout(() => setStatus('idle'), 3000);
       } else {
         setStatus('error');
@@ -45,61 +33,70 @@ const FeedbackForm = () => {
   };
 
   const buttonLabel = {
-    idle: 'Send Feedback',
-    submitting: 'Sending…',
-    success: '✓ Submitted!',
-    error: '✗ Error — try again'
+    idle: 'Send',
+    submitting: '…',
+    success: '✓',
+    error: '✗'
   }[status];
 
   return (
-    <div className="feedback-form-container">
-      <h2 className="feedback-title">Share Your Thoughts</h2>
-
-      <form className="feedback-form" onSubmit={handleSubmit}>
-        <div className="form-section">
-          <label htmlFor="adaptive">Do you think this is adaptive or maladaptive?</label>
+    <div className="form-section">
+      <label htmlFor={id}>{label}</label>
+      <div className="input-row">
+        {type === 'textarea' ? (
           <textarea
-            id="adaptive"
-            name="adaptive"
-            value={formData.adaptive}
-            onChange={handleChange}
-            placeholder="Share your thoughts..."
+            id={id}
+            name={id}
+            value={value}
+            onChange={e => setValue(e.target.value)}
+            placeholder={placeholder}
             rows="3"
           />
-        </div>
-
-        <div className="form-section">
-          <label htmlFor="research">Ideas for future research?</label>
-          <textarea
-            id="research"
-            name="research"
-            value={formData.research}
-            onChange={handleChange}
-            placeholder="What would you like to explore further?"
-            rows="3"
-          />
-        </div>
-
-        <div className="form-section">
-          <label htmlFor="email">Wanna get in touch?</label>
+        ) : (
           <input
-            id="email"
+            id={id}
             type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            placeholder="your.email@example.com"
+            name={id}
+            value={value}
+            onChange={e => setValue(e.target.value)}
+            placeholder={placeholder}
           />
-        </div>
-
+        )}
         <button
-          type="submit"
-          className={`submit-btn ${status}`}
+          className={`inline-submit-btn ${status}`}
+          onClick={handleSubmit}
           disabled={status === 'submitting'}
         >
           {buttonLabel}
         </button>
-      </form>
+      </div>
+    </div>
+  );
+};
+
+const FeedbackForm = () => {
+  return (
+    <div className="feedback-form-container">
+      <h2 className="feedback-title">Share Your Thoughts</h2>
+
+      <div className="feedback-form">
+        <FeedbackField
+          id="adaptive"
+          label="Do you think this is adaptive or maladaptive?"
+          placeholder="Share your thoughts..."
+        />
+        <FeedbackField
+          id="research"
+          label="Ideas for future research?"
+          placeholder="What would you like to explore further?"
+        />
+        <FeedbackField
+          id="email"
+          label="Wanna get in touch?"
+          placeholder="your.email@example.com"
+          type="email"
+        />
+      </div>
     </div>
   );
 };
