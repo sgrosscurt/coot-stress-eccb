@@ -6,8 +6,8 @@ const StartScreen = ({ onStart }) => {
     <div className="start-screen">
       <div className="start-container">
         <div className="coot-icon">
-          🦆
-        </div>
+  <img src={`${process.env.PUBLIC_URL}/icons/coot.png`} alt="Eurasian coot" />
+</div>
         
         <h1 className="start-title">When stress interacts, responses diverge</h1>
         
@@ -21,7 +21,9 @@ const StartScreen = ({ onStart }) => {
         </p>
 
         <button className="start-btn" onClick={onStart}>
-          <span className="coot-emoji">🦆</span>
+          <span className="coot-emoji">
+  <img src={`${process.env.PUBLIC_URL}/icons/coot.png`} alt="" />
+</span>
           <span className="btn-text">Click to Start</span>
         </button>
       </div>
