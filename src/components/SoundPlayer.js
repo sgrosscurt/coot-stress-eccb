@@ -2,19 +2,30 @@ import React from 'react';
 import './SoundPlayer.css';
 
 const SoundPlayer = ({ tabId, soundType, audioRefs, isPlaying, isMuted }) => {
-  const getSoundLabel = () => {
-    switch (soundType) {
-      case 'light_off_noise_off':
-        return 'Baseline (No stressors)';
-      case 'light_on_noise_off':
-        return 'Light Pollution Only';
-      case 'light_off_noise_on':
-        return 'Noise Pollution Only';
-      case 'light_on_noise_on':
-        return 'Light + Noise Pollution';
-      default:
-        return 'Unknown';
-    }
+  const labels = {
+  activity: {
+    light_off_noise_off: 'Quiet & Dark (108 calls/day)',
+    light_on_noise_off: 'Quiet & Bright (168 calls/day, +56%)',
+    light_off_noise_on: 'Noisy & Dark (128 calls/day, +18%)',
+    light_on_noise_on: 'Noisy & Bright (318 calls/day +194%)',
+  },
+  circadian: {
+    light_off_noise_off: 'Quiet & Dark (unimodal: 15:15)',
+    light_on_noise_off: 'Quiet & Bright (unimodal: 13:40, -155 min)',
+    light_off_noise_on: 'Noisy & Dark (unimodal: 16:35, +80 min)',
+    light_on_noise_on: 'Noisy & Bright (bimodal: 07:25 and 17:00)',
+  },
+  duration: {
+    light_off_noise_off: 'Quiet & Dark (83 ms)',
+    light_on_noise_off: 'Quiet & Bright (61 ms, -27%)',
+    light_off_noise_on: 'Noisy & Dark (63 ms, -24%)',
+    light_on_noise_on: 'Noisy & Bright (56 ms, -33%)',
+  },
+};
+  };
+
+  return labels[tabId]?.[soundType] ?? 'Unknown';
+};
   };
 
   // FIX: use process.env.PUBLIC_URL so paths work both locally (localhost:3000)
