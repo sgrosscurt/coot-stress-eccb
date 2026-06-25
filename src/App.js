@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import StartScreen from './components/StartScreen';
 import TabContainer from './components/TabContainer';
@@ -7,6 +7,26 @@ import FeedbackForm from './components/FeedbackForm';
 function App() {
   const [appStarted, setAppStarted] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
+
+  useEffect(() => {
+  const stopAllAudio = () => {
+    document.querySelectorAll('audio').forEach(audio => {
+      audio.pause();
+      audio.currentTime = 0;
+    });
+  };
+
+  window.addEventListener('beforeunload', stopAllAudio);
+  window.addEventListener('pagehide', stopAllAudio);        // iOS Safari
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'hidden') stopAllAudio();
+  });
+
+  return () => {
+    window.removeEventListener('beforeunload', stopAllAudio);
+    window.removeEventListener('pagehide', stopAllAudio);
+  };
+}, []);
 
   return (
     <div className="app">
